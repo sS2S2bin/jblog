@@ -4,7 +4,8 @@ public class UserVo {
 	private String id;
 	private String name;
 	private String password;
-	private String join_date;
+	private String joinDate;
+	
 	
 	
 	public String getId() {
@@ -25,11 +26,16 @@ public class UserVo {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getJoin_date() {
-		return join_date;
+	public String getJoinDate() {
+		return joinDate;
 	}
-	public void setJoin_date(String join_date) {
-		this.join_date = join_date;
+	public void setJoinDate(String joinDate) {
+		this.joinDate = joinDate;
+	}
+	
+	@Override
+	public String toString() {
+		return "UserVo [id=" + id + ", name=" + name + ", password=" + password + ", joinDate=" + joinDate + "]";
 	}
 	
 	

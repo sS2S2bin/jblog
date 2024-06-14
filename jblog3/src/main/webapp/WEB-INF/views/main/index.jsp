@@ -11,14 +11,9 @@
 </head>
 <body>
 	<div class="center-content">
-		<h1 class="logo">JBlog</h1>
-		<ul class="menu">
-			<li><a href="${pageContext.request.contextPath }/user/login">로그인</a></li>
-			<li><a href="${pageContext.request.contextPath }/user/join">회원가입</a></li>
-			<li><a href="${pageContext.request.contextPath }/user/logout">로그아웃</a></li>
-			<li><a href="${pageContext.request.contextPath }/${authUser.userId}">내블로그</a></li>
-		</ul>
-		<form class="search-form">
+		<c:import url="/WEB-INF/views/includes/menu.jsp"/>
+		<!-- @Auth 해서 userlist 리스트업하고, 구경할 수 있되, write는 못하게 설정 -->
+		<!-- <form class="search-form">
 			<fieldset>
 				<input type="text" name="keyword" />
 				<input type="submit" value="검색" />
@@ -28,7 +23,7 @@
 				<input type="radio" name="which" value="tag"> <label>태그</label>
 				<input type="radio" name="which" value="blog-user"> <label>블로거</label>
 			</fieldset>
-		</form>
+		</form> -->
 	</div>
 </body>
 </html>

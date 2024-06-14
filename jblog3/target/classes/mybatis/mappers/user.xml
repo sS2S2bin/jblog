@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-	<insert id="userInsert" parameterType="uservo">
+	<insert id="insert" parameterType="uservo">
 		<![CDATA[
 		insert
 		  into user
@@ -10,28 +10,13 @@
 		]]>
 	</insert>
 	
-	<insert id="blogInsert" parameterType="uservo">
-		<![CDATA[
-		insert
-		  into blog
-		values ( #{id }, #{id }, '/assets/images/logo.jpg')
-		]]>
-	</insert>
 	
-	<insert id="categoryInsert" parameterType="uservo">
+	<select id="getUser" parameterType="map" resultType="uservo">
 		<![CDATA[
-		insert
-		  into category
-		values (null, 'default', 'Please edit the description.', current_date(), #{id} )
-		]]>
-	</insert>
-	
-	<select id="findByEmailAndPassword" parameterType="map" resultType="uservo">
-		<![CDATA[
-		select no, name, role
+		select id, name, password, join_date
 		  from user
-		 where email = #{email }
-		   and password=password(#{password })
+		 where id = #{id }
+		   and password=#{password }
 		]]>
 	</select>
 	

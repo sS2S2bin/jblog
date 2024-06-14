@@ -4,8 +4,8 @@ public class CategoryVo {
 	private Long no;
 	private String name;
 	private String description;
-	private String reg_date;
-	private String blog_id;
+	private String regDate;
+	private String blogId;
 	public Long getNo() {
 		return no;
 	}
@@ -24,18 +24,19 @@ public class CategoryVo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getReg_date() {
-		return reg_date;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setReg_date(String reg_date) {
-		this.reg_date = reg_date;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
-	public String getBlog_id() {
-		return blog_id;
+	public String getBlogId() {
+		return blogId;
 	}
-	public void setBlog_id(String blog_id) {
-		this.blog_id = blog_id;
+	public void setBlogId(String blogId) {
+		this.blogId = blogId;
 	}
+	
 	
 
 }
