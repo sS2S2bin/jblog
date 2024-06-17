@@ -13,29 +13,51 @@
 	</insert>
 	
 	
-	<select id="findByEmailAndPassword" parameterType="map" resultType="uservo">
+	<select id="getContent" parameterType="map" resultType="postvo">
 		<![CDATA[
-		select no, name, role
-		  from user
-		 where email = #{email }
-		   and password=password(#{password })
+		select p.title as title, p.contents as contents, p.reg_date as regDate, p.category_no as categoryNo
+		from category c, blog b, post p
+		where c.blog_id = b.id
+		and p.category_no = c.no 
+		and b.id = #{id} 
+		and p.category_no = #{categoryNo}
+		and p.no = #{postNo}
 		]]>
 	</select>
 	
-	<select id="findByNo" parameterType="long" resultType="uservo">
-		<![CDATA[
-		select no, name, email, gender
-		  from user
-		 where no = #{no }
+	<select id="getBlogContent" parameterType="string" resultType="blogvo">
+	<![CDATA[
+		select title, log 
+		from blog
+		where id=#{id}
 		]]>
 	</select>
 	
-	
-	<select id="findByEmail" parameterType="string" resultType="uservo">
+	<select id="getCategoryList" parameterType="string" resultType="categoryvo">
 		<![CDATA[
-		select no, name, email, gender
-		  from user
-		 where email = #{email}
+		select no, name from category
+		where blog_id=#{id}
+		]]>
+	</select>
+	
+	<select id="getMinCategory" parameterType="string" resultType="long">
+		<![CDATA[
+		select min(no) from category
+		where blog_id=#{id}
+		]]>
+	</select>
+	
+	<select id="getPostList" parameterType="long" resultType="postvo">
+		<![CDATA[
+		select no,title,contents, reg_date, category_no from post
+		where category_no = #{category_no}
+		]]>
+	</select>
+	
+	<select id="getMinPost" parameterType="long" resultType="long">
+		<![CDATA[
+		select min(no) from post
+		where category_no=#{category_no}
 		]]>
 	</select>
 	

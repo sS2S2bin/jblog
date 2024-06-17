@@ -3,7 +3,7 @@ package com.poscodx.jblog.vo;
 public class BlogVo {
 	private String id;
 	private String title;
-	private String log;
+	private String logo;
 	public String getId() {
 		return id;
 	}
@@ -16,11 +16,11 @@ public class BlogVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getLog() {
-		return log;
+	public String getLogo() {
+		return logo;
 	}
 	public void setLog(String log) {
-		this.log = log;
+		this.logo = log;
 	}
 	
 

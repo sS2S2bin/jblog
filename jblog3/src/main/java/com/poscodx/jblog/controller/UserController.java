@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.poscodx.jblog.service.BoardService;
+import com.poscodx.jblog.service.BlogService;
 import com.poscodx.jblog.service.CategoryService;
 import com.poscodx.jblog.service.UserService;
 import com.poscodx.jblog.vo.UserVo;
@@ -17,12 +17,12 @@ import com.poscodx.jblog.vo.UserVo;
 public class UserController {
 	
 	private UserService userService;
-	private BoardService boardService;
+	private BlogService boardService;
 	private CategoryService categoryService;
 	
 	public UserController(
 			UserService userService,
-			BoardService boardService,
+			BlogService boardService,
 			CategoryService categoryService) {
 		this.userService = userService;
 		this.boardService = boardService;
