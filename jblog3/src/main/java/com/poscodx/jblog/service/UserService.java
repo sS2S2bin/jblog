@@ -23,4 +23,16 @@ public class UserService {
 	public UserVo getUser(String id, String password) {
 		return userRepository.getUser(id,password);
 	}
+
+	public boolean checkId(String id) {
+		if(userRepository.checkId(id)>0) {
+			return true;
+		}else {
+			return false;
+		}
+		// return userRepository.checkId(id)>0?false:true ;
+		
+	}
+
+
 }

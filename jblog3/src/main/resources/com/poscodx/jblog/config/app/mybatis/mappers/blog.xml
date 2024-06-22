@@ -27,25 +27,12 @@
 	
 	<select id="getBlogContent" parameterType="string" resultType="blogvo">
 	<![CDATA[
-		select title, log 
+		select title, logo 
 		from blog
 		where id=#{id}
 		]]>
 	</select>
 	
-	<select id="getCategoryList" parameterType="string" resultType="categoryvo">
-		<![CDATA[
-		select no, name from category
-		where blog_id=#{id}
-		]]>
-	</select>
-	
-	<select id="getMinCategory" parameterType="string" resultType="long">
-		<![CDATA[
-		select min(no) from category
-		where blog_id=#{id}
-		]]>
-	</select>
 	
 	<select id="getPostList" parameterType="long" resultType="postvo">
 		<![CDATA[
@@ -54,32 +41,25 @@
 		]]>
 	</select>
 	
-	<select id="getMinPost" parameterType="long" resultType="long">
+
+	<update id="update" parameterType="map">
 		<![CDATA[
-		select min(no) from post
-		where category_no=#{category_no}
+		update blog
+	   	   set title = #{blogVo.title },
+			   logo = #{blogVo.logo }
+	     where id = #{id}    
 		]]>
-	</select>
-	
-	<update id="update" parameterType="uservo">
-		<choose>
-			<when test='password == ""'>
-				<![CDATA[
-				update user
-				   set name=#{name },
-				       gender=#{gender }
-				 where no=#{no }
-				]]>
-			</when>
-			<otherwise>
-				<![CDATA[
-				update user
-				   set name=#{name },
-				       password=password(#{password }),
-				       gender=#{gender }
-				 where no=#{no }
-				]]>
-			</otherwise>
-		</choose>
 	</update>
+	
+	
+	<insert id="setPost" parameterType="postvo">
+		<![CDATA[
+		insert
+		  into post
+		values ( null, #{title }, #{contents }, current_date(), #{categoryNo})
+		]]>
+	</insert>
+	
+	
+	
 </mapper>

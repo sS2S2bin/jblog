@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="category">
-	<insert id="insert" parameterType="string">
+<mapper namespace="user">
+	<insert id="insert" parameterType="uservo">
 		<![CDATA[
 		insert
-		  into category
-		values (null, 'default', 'Please edit the description.', current_date(), #{id} )
+		  into user
+		values ( #{id }, #{name }, #{password }, current_date())
 		]]>
 	</insert>
 	
-	<select id="findByEmailAndPassword" parameterType="map" resultType="uservo">
+	<select id="checkId" parameterType="String" resultType="long">
 		<![CDATA[
-		select no, name, role
-		  from user
-		 where email = #{email }
-		   and password=password(#{password })
+		select count(id)
+		from user
+		where id=#{id}
 		]]>
 	</select>
+	
+	<select id="getUser" parameterType="map" resultType="uservo">
+		<![CDATA[
+		select id, name, password, join_date
+		  from user
+		 where id = #{id }
+		   and password=#{password }
+		]]>
+	</select>
+	
 	
 	<select id="findByNo" parameterType="long" resultType="uservo">
 		<![CDATA[

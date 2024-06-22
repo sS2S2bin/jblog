@@ -11,9 +11,9 @@
 </head>
 <body>
 	<div class="center-content">
+		<h1 class="logo"></h1> 
 		<c:import url="/WEB-INF/views/includes/menu.jsp"/>
-		<!-- @Auth 해서 userlist 리스트업하고, 구경할 수 있되, write는 못하게 설정 -->
-		<!-- <form class="search-form">
+		<form class="search-form">
 			<fieldset>
 				<input type="text" name="keyword" />
 				<input type="submit" value="검색" />
@@ -23,7 +23,7 @@
 				<input type="radio" name="which" value="tag"> <label>태그</label>
 				<input type="radio" name="which" value="blog-user"> <label>블로거</label>
 			</fieldset>
-		</form> -->
+		</form>
 	</div>
 </body>
 </html>

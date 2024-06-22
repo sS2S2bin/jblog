@@ -8,23 +8,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JBlog</title>
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+<script src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.9.0.js"></script>
+<script>
+$(function() {
+	$("#submit-cateogry").click(function() {
+		var name = $("#name").val();
+		var description = $("#description").val();
+		if(name == '' || description=='') {
+			alert('카테고리 제목과 설명을 채워주세요.');
+			event.preventDefault(); // 폼 제출 방지
+		}
+	})
+});
+</script>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>Spring 이야기</h1>
-			<ul>
-				<li><a href="">로그인</a></li>
-				<li><a href="">로그아웃</a></li>
-				<li><a href="">블로그 관리</a></li>
-			</ul>
+			<h1>${blogVo.title }</h1> 
+			<c:import url="/WEB-INF/views/includes/menu.jsp"/>
 		</div>
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
-					<li><a href="">기본설정</a></li>
+					<li><a href="${pageContext.request.contextPath}/${id }/admin/basic">기본설정</a></li>
 					<li class="selected">카테고리</li>
-					<li><a href="">글작성</a></li>
+					<li><a href="${pageContext.request.contextPath}/${id }/admin/write">글작성</a></li>
 				</ul>
 		      	<table class="admin-cat">
 		      		<tr>
@@ -34,51 +43,42 @@
 		      			<th>설명</th>
 		      			<th>삭제</th>      			
 		      		</tr>
+						<c:set var="count" value="${fn:length(categoryList) }" />
+						<c:forEach items="${categoryList}" var="categoryVo" varStatus="status">
 					<tr>
-						<td>3</td>
-						<td>미분류</td>
-						<td>10</td>
-						<td>카테고리를 지정하지 않은 경우</td>
-						<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
+						<td>${count-status.index }</td>
+						<td>${categoryVo.name }</td>
+						<td>${categoryVo.postCount }</td>
+						<td>${categoryVo.description }</td>
+						<td>
+						<c:if test="${categoryVo.postCount>0 }">
+						<img src="${pageContext.request.contextPath}/assets/images/delete.jpg">
+						</c:if>
+						</td>
 					</tr>  
-					<tr>
-						<td>2</td>
-						<td>스프링 스터디</td>
-						<td>20</td>
-						<td>어쩌구 저쩌구</td>
-						<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>스프링 프로젝트</td>
-						<td>15</td>
-						<td>어쩌구 저쩌구</td>
-						<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
-					</tr>					  
+						</c:forEach>
 				</table>
-      	
       			<h4 class="n-c">새로운 카테고리 추가</h4>
+		      	<form action="${pageContext.request.contextPath }/${id }/admin/category" method="post">
+		      	<input type="hidden" name="blogId" value="${id }">
 		      	<table id="admin-cat-add">
 		      		<tr>
 		      			<td class="t">카테고리명</td>
-		      			<td><input type="text" name="name"></td>
+		      			<td><input id="name" type="text" name="name"></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="t">설명</td>
-		      			<td><input type="text" name="desc"></td>
+		      			<td><input id="description" type="text" name="description"></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="s">&nbsp;</td>
-		      			<td><input type="submit" value="카테고리 추가"></td>
+		      			<td><input id="submit-cateogry" type="submit" value="카테고리 추가"></td>
 		      		</tr>      		      		
-		      	</table> 
+		      	</table>
+	      		</form> 
 			</div>
 		</div>
-		<div id="footer">
-			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2016
-			</p>
-		</div>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 	</div>
 </body>
 </html>

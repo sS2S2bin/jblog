@@ -1,6 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 class="logo">JBlog</h1>
 	<ul class="menu">
 		<c:choose>
 			<c:when test='${empty authUser}'>

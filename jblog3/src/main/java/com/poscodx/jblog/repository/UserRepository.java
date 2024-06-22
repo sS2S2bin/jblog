@@ -24,4 +24,10 @@ public class UserRepository {
 		return sqlSession.selectOne("user.getUser", Map.of("id",id,"password",password));
 	}
 
+
+	public Long checkId(String id) {
+		return sqlSession.selectOne("user.checkId", id);
+	}
+
+
 }

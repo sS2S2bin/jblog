@@ -4,6 +4,9 @@ public class BlogVo {
 	private String id;
 	private String title;
 	private String logo;
+	
+	
+
 	public String getId() {
 		return id;
 	}
@@ -19,8 +22,8 @@ public class BlogVo {
 	public String getLogo() {
 		return logo;
 	}
-	public void setLog(String log) {
-		this.logo = log;
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 	
 

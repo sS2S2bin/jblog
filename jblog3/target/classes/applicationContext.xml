@@ -29,7 +29,7 @@
 	<!-- MyBatis SqlSessionFactoryBean --> 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
 		<property name="dataSource" ref="dataSource" /> 
-		<property name="configLocation" value="classpath:mybatis/configuration.xml" /> 
+		<property name="configLocation" value="classpath:com/poscodx/jblog/config/app/mybatis/configuration.xml" /> 
 	</bean>
 
 	<!-- MyBatis SqlSessionTemplate --> 
